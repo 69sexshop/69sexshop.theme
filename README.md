@@ -1,19 +1,14 @@
 # 69 SEXSHOP — Shopify Theme
 
-Tema Shopify 2.0 buildless: Liquid + JSON templates + CSS + JavaScript.
-Diseñado para conectarse directamente a un repositorio GitHub mediante la integración oficial de Shopify.
+Premium Shopify Online Store 2.0 theme for 69 SEXSHOP.
 
-## Flujo recomendado
-- `main`: producción.
-- `develop`: desarrollo.
-- `feature/*`: cambios concretos.
+## Structure
+- `layout/` — main Shopify layout
+- `sections/` — modular homepage and commerce sections
+- `templates/` — JSON templates
+- `snippets/` — reusable Liquid snippets
+- `assets/` — CSS, JS and brand assets
+- `config/` — Shopify theme settings
 
-## Instalación
-1. Crea un repositorio GitHub y sube el contenido de esta carpeta a la raíz del repo.
-2. En Shopify: Tienda online → Temas → Agregar tema → Conectar desde GitHub.
-3. Selecciona el repositorio y la rama `main` o `develop`.
-4. Personaliza imágenes, colecciones, menús y enlaces desde el editor del tema.
-5. Para desarrollo local, usa Shopify CLI y una development theme.
-
-## Nota
-El logo incluido es el archivo de referencia entregado para 69 SEXSHOP. Para producción conviene reemplazarlo por un SVG/PNG de alta resolución con fondo transparente.
+## GitHub / Shopify
+Keep `main` as production and use feature branches for development. Connect the repository from Shopify Admin → Online Store → Themes → Add theme → Connect from GitHub.

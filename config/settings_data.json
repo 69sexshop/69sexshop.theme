@@ -1,0 +1,12 @@
+{
+  "current": {
+    "settings": {
+      "accent": "#E50914",
+      "background": "#080808",
+      "surface": "#111111",
+      "text": "#F5F1EA",
+      "muted": "#AAA39B",
+      "show_age_notice": true
+    }
+  }
+}
