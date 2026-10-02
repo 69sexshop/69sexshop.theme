@@ -1,0 +1,11 @@
+<section class="hero">
+  <div class="hero-media">{% if section.settings.image %}<img src="{{ section.settings.image | image_url: width: 2200 }}" alt="" loading="eager">{% endif %}</div>
+  <div class="container"><div class="hero-content">
+    <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+    <h1>{{ section.settings.heading }} <span class="accent">{{ section.settings.accent }}</span></h1>
+    <p>{{ section.settings.text }}</p>
+    <div class="hero-actions"><a class="btn btn--solid" href="{{ section.settings.button_url }}">{{ section.settings.button_label }} →</a>{% if section.settings.secondary_label != blank %}<a class="btn" href="{{ section.settings.secondary_url }}">{{ section.settings.secondary_label }}</a>{% endif %}</div>
+    <div class="trust-strip"><span><i></i> Envío discreto</span><span><i></i> Pago seguro</span><span><i></i> Privacidad</span></div>
+  </div></div>
+</section>
+{% schema %}{"name":"Hero 69","settings":[{"type":"image_picker","id":"image","label":"Imagen de fondo"},{"type":"text","id":"eyebrow","label":"Eyebrow","default":"Intimidad · Deseo · Bienestar"},{"type":"text","id":"heading","label":"Título","default":"El placer tiene"},{"type":"text","id":"accent","label":"Título rojo","default":"un nuevo lugar."},{"type":"textarea","id":"text","label":"Descripción","default":"Descubre una selección de productos para adultos pensada para quienes buscan deseo, bienestar y una experiencia de compra privada."},{"type":"text","id":"button_label","label":"Botón principal","default":"Explorar tienda"},{"type":"url","id":"button_url","label":"Enlace principal"},{"type":"text","id":"secondary_label","label":"Botón secundario","default":"Descubrir colección"},{"type":"url","id":"secondary_url","label":"Enlace secundario"}],"presets":[{"name":"Hero 69"}]}{% endschema %}

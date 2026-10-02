@@ -1,0 +1,18 @@
+<div class="announcement">Envío discreto · Compra segura · Atención privada</div>
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      {% if settings.logo %}<img src="{{ settings.logo | image_url: width: 260 }}" alt="{{ shop.name }}">{% else %}<span class="brand-text">69 <span class="accent">SEXSHOP</span></span>{% endif %}
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="{{ routes.root_url }}">Inicio</a><a href="{{ routes.all_products_collection_url }}">Tienda</a>
+      {% for link in linklists.main-menu.links limit: 6 %}<a href="{{ link.url }}">{{ link.title }}</a>{% endfor %}
+    </nav>
+    <div class="header-actions">
+      <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Buscar">⌕</a>
+      <a class="icon-btn" href="{{ routes.cart_url }}" aria-label="Carrito">Bag {{ cart.item_count }}</a>
+      <button class="icon-btn menu-btn" type="button" aria-label="Menú" data-menu>☰</button>
+    </div>
+  </div>
+</header>
+{% schema %}{"name":"Header","settings":[]}{% endschema %}
