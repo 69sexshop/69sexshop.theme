@@ -3,7 +3,7 @@
   <a class="product-link" href="{{ product.url }}">
     <div class="product-image">
       {%- if product.available == false -%}
-        <span class="badge badge--out">Por encargo</span>
+        <span class="badge badge--out">Agotado</span>
       {%- elsif product.compare_at_price > product.price -%}
         <span class="badge">Oferta</span>
       {%- endif -%}
