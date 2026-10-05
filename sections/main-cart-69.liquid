@@ -1,0 +1,39 @@
+<section class="cart">
+  <div class="container">
+    <h1>Carrito</h1>
+    {%- if cart.item_count > 0 -%}
+      {% form 'cart', cart %}
+        {%- for item in cart.items -%}
+          <div class="cart-row">
+            {%- if item.image != blank -%}
+              {{ item.image | image_url: width: 240 | image_tag: loading: 'lazy', alt: item.title }}
+            {%- else -%}
+              <span class="cart-noimg"></span>
+            {%- endif -%}
+            <div>
+              <a href="{{ item.url }}">{{ item.product.title }}</a>
+              {%- unless item.product.has_only_default_variant -%}<div class="cart-variant">{{ item.variant.title }}</div>{%- endunless -%}
+            </div>
+            <input class="qty" name="updates[]" value="{{ item.quantity }}" min="0" type="number" aria-label="Cantidad de {{ item.product.title | escape }}">
+            <div class="line-price">{{ item.final_line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+        <div class="cart-total">
+          <div class="total-line"><span>Total</span><strong>{{ cart.total_price | money }}</strong></div>
+          <div class="cart-actions">
+            <button class="btn" type="submit" name="update">Actualizar</button>
+            <button class="btn btn--solid" type="submit" name="checkout">Finalizar compra</button>
+          </div>
+        </div>
+      {% endform %}
+    {%- else -%}
+      <div class="empty">
+        <p>Tu carrito está vacío.</p>
+        <a class="btn" href="{{ routes.all_products_collection_url }}">Explorar tienda</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{"name":"Carrito 69","settings":[],"presets":[{"name":"Carrito 69"}]}
+{% endschema %}

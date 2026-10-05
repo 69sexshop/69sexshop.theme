@@ -576,28 +576,3 @@ html.age-lock .advisor,body.drawer-open .advisor{display:none}
 .juice-note{margin-top:40px;max-width:720px;color:#8d8a84;font-size:12px}
 @media(max-width:1000px){.juice{grid-template-columns:1fr}.juice-media{aspect-ratio:16/10}.juice-initial{font-size:150px}}
 @media(max-width:600px){.juice-tab{padding:0 18px;min-height:42px;font-size:14px}}
-
-/* ---------- Modo discreto ---------- */
-.discreet-btn .i-on{display:none}
-html.discreet .discreet-btn .i-on{display:block}
-html.discreet .discreet-btn .i-off{display:none}
-html.discreet .discreet-btn{border-color:var(--accent-2);box-shadow:0 0 18px rgba(255,16,32,.3)}
-html.discreet img{filter:blur(16px) grayscale(.35);transition:filter .3s}
-
-/* ---------- Barra de compra fija (celular) ---------- */
-.sticky-buy{display:none}
-@media(max-width:700px){
-  .sticky-buy{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(5,5,5,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(115%);transition:transform .3s}
-  .sticky-buy.is-visible{transform:none}
-  .sticky-buy-info{flex:1;min-width:0}
-  .sticky-buy-info strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:500 15px/1.2 var(--serif)}
-  .sticky-buy-info span{color:var(--muted);font-size:13px}
-  .sticky-buy .btn{min-height:46px;padding:0 20px;font-size:13px;flex:none}
-  body.sticky-on .advisor:not(.is-open),body.sticky-on .wa-float{bottom:88px}
-  body:has(.advisor.is-open) .sticky-buy{display:none}
-  .icon-btn{width:40px;height:40px}
-  .header-actions{gap:6px}
-}
-
-/* ---------- Productos relacionados ---------- */
-.related{border-top:1px solid var(--line)}

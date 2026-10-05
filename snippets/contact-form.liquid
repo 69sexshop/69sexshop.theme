@@ -1,0 +1,36 @@
+{%- assign wa = settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' -%}
+<div class="contact-page">
+  <p class="section-copy">Escríbenos y te respondemos lo antes posible.</p>
+  {% form 'contact', id: 'ContactPage', class: 'request-form contact-form' %}
+    {%- if form.posted_successfully? -%}
+      <p class="request-ok">¡Gracias! Recibimos tu mensaje y te responderemos pronto.</p>
+    {%- else -%}
+      {%- if form.errors -%}
+        <p class="request-error">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+      <div class="request-row">
+        <div class="field">
+          <label for="ContactNombre">Nombre</label>
+          <input id="ContactNombre" type="text" name="contact[name]" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="ContactTel">Teléfono o WhatsApp</label>
+          <input id="ContactTel" type="tel" name="contact[phone]" autocomplete="tel">
+        </div>
+      </div>
+      <div class="field">
+        <label for="ContactEmail">Correo</label>
+        <input id="ContactEmail" type="email" name="contact[email]" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="ContactMsg">Mensaje</label>
+        <textarea id="ContactMsg" name="contact[body]" rows="4" required></textarea>
+      </div>
+      <button class="btn btn--solid btn--block" type="submit">Enviar mensaje</button>
+      <p class="request-legal">Usaremos tus datos solo para responderte. Más información en <a href="{{ routes.root_url }}pages/privacidad">Privacidad y datos</a>.</p>
+    {%- endif -%}
+  {% endform %}
+  {%- if wa != blank -%}
+    <a class="btn btn--block request-wa" href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  {%- endif -%}
+</div>

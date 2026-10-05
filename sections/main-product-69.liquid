@@ -1,4 +1,3 @@
-<script type="application/ld+json">{{ product | structured_data }}</script>
 {%- assign current = product.selected_or_first_available_variant -%}
 <section class="container product-page">
   <div class="product-gallery">
@@ -132,51 +131,11 @@
     </div>
   </div>
 </section>
-
-<div class="sticky-buy" data-sticky-buy>
-  <div class="sticky-buy-info">
-    <strong>{{ product.title }}</strong>
-    <span data-sticky-price>{{ current.price | money }}</span>
-  </div>
-  <button class="btn btn--solid" type="button" data-sticky-btn>{% if current.available %}Agregar al carrito{% else %}Encargar producto{% endif %}</button>
-</div>
-
-{%- if section.settings.show_related -%}
-  {%- assign related_handle = '' -%}
-  {%- for c in product.collections -%}
-    {%- if related_handle == '' and c.handle != 'all' and c.handle != 'frontpage' -%}
-      {%- assign related_handle = c.handle -%}
-    {%- endif -%}
-  {%- endfor -%}
-  {%- assign related_collection = collections[related_handle] -%}
-  {%- if related_collection != blank -%}
-    {%- capture related_html -%}
-      {%- assign related_count = 0 -%}
-      {%- for item in related_collection.products -%}
-        {%- if item.id != product.id and related_count < 4 -%}
-          {% render 'product-card', product: item %}
-          {%- assign related_count = related_count | plus: 1 -%}
-        {%- endif -%}
-      {%- endfor -%}
-    {%- endcapture -%}
-    {%- if related_html contains 'product-card' -%}
-      <section class="section related">
-        <div class="container">
-          <h2 class="section-title">{{ section.settings.related_title }}</h2>
-          <div class="product-grid product-rail">{{ related_html }}</div>
-        </div>
-      </section>
-    {%- endif -%}
-  {%- endif -%}
-{%- endif -%}
 {% schema %}
 {
   "name": "Producto 69",
   "settings": [
     {"type":"page","id":"size_guide","label":"Página de guía de tallas (opcional)","info":"Si eliges una página, aparece el enlace «Guía de tallas» junto a la talla."},
-    {"type":"header","content":"Productos relacionados"},
-    {"type":"checkbox","id":"show_related","label":"Mostrar productos relacionados","default":true},
-    {"type":"text","id":"related_title","label":"Título","default":"También te puede interesar"},
     {"type":"header","content":"Descripción y modo de uso"},
     {"type":"text","id":"description_title","label":"Título de la descripción","default":"Descripción"},
     {"type":"text","id":"usage_title","label":"Título del modo de uso","default":"Modo de uso"},

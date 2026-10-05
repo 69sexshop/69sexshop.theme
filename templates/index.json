@@ -1,0 +1,394 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-slider-69",
+      "blocks": {
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "line_1": "El placer",
+            "line_accent": "tiene un nuevo",
+            "line_3": "lugar.",
+            "text": "Una selección de productos para adultos pensada para quienes buscan una experiencia íntima y una compra privada.",
+            "button_label": "Explorar tienda",
+            "button_url": "/collections/all",
+            "button2_label": "Descubrir colección",
+            "button2_url": "#seleccion"
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "line_1": "Combos",
+            "line_accent": "listos para",
+            "line_3": "regalar.",
+            "text": "Elige un combo armado y recíbelo en empaque neutro.",
+            "button_label": "Ver combos",
+            "button_url": "/collections/combos"
+          }
+        },
+        "s3": {
+          "type": "slide",
+          "settings": {
+            "line_1": "Lencería",
+            "line_accent": "que se siente",
+            "line_3": "como tú.",
+            "text": "Piezas seleccionadas para sentirte sensual, con estilo.",
+            "button_label": "Ver lencería",
+            "button_url": "/collections/lenceria"
+          }
+        },
+        "s4": {
+          "type": "slide",
+          "settings": {
+            "line_1": "Lo más",
+            "line_accent": "deseado",
+            "line_3": "de la tienda.",
+            "text": "Una selección corta para elegir sin dudar.",
+            "button_label": "Ver más deseados",
+            "button_url": "/collections/mas-deseados"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "categories": {
+      "type": "categories-69",
+      "blocks": {
+        "c1": {
+          "type": "category",
+          "settings": {
+            "title": "Para ella",
+            "subtitle": "Pensado para ella",
+            "url": "/collections/para-ella"
+          }
+        },
+        "c2": {
+          "type": "category",
+          "settings": {
+            "title": "Para él",
+            "subtitle": "Energía y resistencia",
+            "url": "/collections/para-el"
+          }
+        },
+        "c3": {
+          "type": "category",
+          "settings": {
+            "title": "Parejas",
+            "subtitle": "Para compartir",
+            "url": "/collections/parejas"
+          }
+        },
+        "c4": {
+          "type": "category",
+          "settings": {
+            "title": "Lencería",
+            "subtitle": "Sensualidad",
+            "url": "/collections/lenceria"
+          }
+        },
+        "c5": {
+          "type": "category",
+          "settings": {
+            "title": "Lubricantes",
+            "subtitle": "Comodidad y juego",
+            "url": "/collections/lubricantes"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ]
+    },
+    "featured": {
+      "type": "featured-products"
+    },
+    "combos": {
+      "type": "combos-69",
+      "blocks": {
+        "k1": {
+          "type": "combo",
+          "settings": {
+            "title": "Combo Rompe Diablas",
+            "badge": "Más vendido",
+            "url": "/collections/combos"
+          }
+        },
+        "k2": {
+          "type": "combo",
+          "settings": {
+            "title": "Combo Titán",
+            "url": "/collections/combos"
+          }
+        },
+        "k3": {
+          "type": "combo",
+          "settings": {
+            "title": "Combo Destroyer",
+            "url": "/collections/combos"
+          }
+        },
+        "k4": {
+          "type": "combo",
+          "settings": {
+            "title": "Combo Pecado",
+            "url": "/collections/combos"
+          }
+        },
+        "k5": {
+          "type": "combo",
+          "settings": {
+            "title": "Combo 69",
+            "url": "/collections/combos"
+          }
+        }
+      },
+      "block_order": [
+        "k1",
+        "k2",
+        "k3",
+        "k4",
+        "k5"
+      ]
+    },
+    "trust": {
+      "type": "trust-69",
+      "blocks": {
+        "t1": {
+          "type": "item",
+          "settings": {
+            "icon": "box",
+            "title": "Empaque discreto",
+            "text": "Empaque neutro, sin referencias al contenido."
+          }
+        },
+        "t2": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "title": "Compra segura",
+            "text": "El pago se procesa con Wompi, una pasarela de pagos colombiana."
+          }
+        },
+        "t3": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "title": "Asesoría privada",
+            "text": "Te ayudamos a elegir por WhatsApp, sin juicios."
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "icon": "star",
+            "title": "Productos seleccionados",
+            "text": "Una curaduría corta: curamos, no acumulamos."
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ]
+    },
+    "finder": {
+      "type": "finder-69",
+      "blocks": {
+        "f1": {
+          "type": "option",
+          "settings": {
+            "title": "Es mi primera vez",
+            "url": "/collections/primera-vez"
+          }
+        },
+        "f2": {
+          "type": "option",
+          "settings": {
+            "title": "Es para mí",
+            "url": "/collections/mas-deseados"
+          }
+        },
+        "f3": {
+          "type": "option",
+          "settings": {
+            "title": "Es para mi pareja",
+            "url": "/collections/parejas"
+          }
+        },
+        "f4": {
+          "type": "option",
+          "settings": {
+            "title": "Busco estimulación",
+            "url": "/collections/estimulacion"
+          }
+        },
+        "f6": {
+          "type": "option",
+          "settings": {
+            "title": "Busco lencería",
+            "url": "/collections/lenceria"
+          }
+        },
+        "f7": {
+          "type": "option",
+          "settings": {
+            "title": "No estoy seguro",
+            "url": "#guia"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f6",
+        "f7"
+      ]
+    },
+    "story": {
+      "type": "story-69"
+    },
+    "faq": {
+      "type": "faq-69",
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "question": "¿El empaque es discreto?",
+            "answer": "<p>Sí. Los pedidos se envían en empaque neutro, sin referencias al contenido.</p>"
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cómo pago mi pedido?",
+            "answer": "<p>Pagas en línea con Wompi, una pasarela de pagos colombiana. Los medios de pago habilitados aparecen al finalizar la compra.</p>"
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cuánto tarda mi pedido?",
+            "answer": "<p>Depende de tu ciudad. El tiempo estimado se muestra al finalizar la compra y está detallado en la página de <a href=\"/pages/envios\">Envíos</a>.</p>"
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cómo sé qué producto elegir?",
+            "answer": "<p>Usa la guía «¿Te ayudo a elegir?» o escríbenos por WhatsApp y una persona del equipo te asesora en privado.</p>"
+          }
+        },
+        "q5": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Cuáles son los productos más vendidos?",
+            "answer": "<p>Los reunimos en la sección <a href=\"/collections/mas-deseados\">Más deseados</a>, para que elijas sin dudar.</p>"
+          }
+        },
+        "q6": {
+          "type": "faq",
+          "settings": {
+            "question": "¿Los productos son confiables?",
+            "answer": "<p>Elegimos pocos productos y bien seleccionados: curamos, no acumulamos. Cada ficha trae su descripción y modo de uso, y si algo no sale como esperabas puedes escribirnos.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6"
+      ]
+    },
+    "juices": {
+      "type": "juices-69",
+      "blocks": {
+        "j1": {
+          "type": "recipe",
+          "settings": {
+            "title": "Rubí",
+            "subtitle": "Fresa, granada y jengibre",
+            "time": "5 min",
+            "tone": "rubi",
+            "ingredients": "2|taza|de fresas (frescas o congeladas)\n0.5|taza|de granos de granada\n1|trozo|de jengibre fresco (2 cm)\n1|cucharada|de miel (opcional)\n1|taza|de agua fría\n||Hielo al gusto",
+            "steps": "Lava las fresas y retira las hojas.\nLicúa las fresas con la granada, el jengibre pelado, la miel y el agua durante un minuto.\nPrueba y ajusta la dulzura; si quieres, cuélalo.\nSírvelo bien frío, con hielo.",
+            "pairing_label": "Parejas",
+            "url": "/collections/parejas"
+          }
+        },
+        "j2": {
+          "type": "recipe",
+          "settings": {
+            "title": "Terciopelo",
+            "subtitle": "Cacao, banano y canela",
+            "time": "5 min",
+            "tone": "cacao",
+            "ingredients": "2|banano|\n2|cucharada|de cacao puro en polvo\n1|taza|de leche (o bebida vegetal)\n1|pizca|de canela\n||Hielo al gusto",
+            "steps": "Pela los bananos maduros y trocéalos.\nLicúa con el cacao, la leche y la canela hasta que quede cremoso.\nSírvelo enseguida, con hielo si lo prefieres.",
+            "pairing_label": "Lencería",
+            "url": "/collections/lenceria"
+          }
+        },
+        "j3": {
+          "type": "recipe",
+          "settings": {
+            "title": "Brisa",
+            "subtitle": "Sandía, menta y limón",
+            "time": "5 min",
+            "tone": "sandia",
+            "ingredients": "3|taza|de sandía en cubos (sin semillas)\n10|hoja|de menta fresca\n1|limón|(solo el jugo)\n||Hielo al gusto",
+            "steps": "Licúa la sandía con la menta y el jugo del limón.\nCuela si prefieres una textura más ligera.\nSírvelo con hielo y una hoja de menta.",
+            "pairing_label": "Lubricantes",
+            "url": "/collections/lubricantes"
+          }
+        },
+        "j4": {
+          "type": "recipe",
+          "settings": {
+            "title": "Trópico",
+            "subtitle": "Mango, maracuyá y jengibre",
+            "time": "5 min",
+            "tone": "mango",
+            "ingredients": "1|mango|\n2|maracuyá|(solo la pulpa)\n1|taza|de agua fría\n1|cucharadita|de jengibre rallado\n1|cucharada|de miel (opcional)",
+            "steps": "Pela el mango y córtalo en trozos.\nLicúa con la pulpa del maracuyá, el jengibre, la miel y el agua.\nCuela las semillas si prefieres.\nSírvelo muy frío.",
+            "pairing_label": "Combos 69",
+            "url": "/collections/combos"
+          }
+        }
+      },
+      "block_order": [
+        "j1",
+        "j2",
+        "j3",
+        "j4"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "featured",
+    "combos",
+    "juices",
+    "trust",
+    "finder",
+    "story",
+    "faq"
+  ]
+}

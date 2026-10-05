@@ -37,13 +37,6 @@ La sección de preguntas frecuentes está en el home (editable desde el editor: 
 Revisa que las respuestas coincidan con tus políticas reales. La franja «Síguenos» del pie muestra
 Instagram, TikTok y WhatsApp según los enlaces que llenes en Configuración del tema.
 
-## Modo discreto, buscadores y velocidad
-- **Modo discreto:** botón con un ojo en el encabezado. Desenfoca todas las imágenes y cambia el nombre de la pestaña a «Notas» con un ícono gris. Se recuerda en el dispositivo.
-- **Barra de compra fija (celular):** al bajar en un producto aparece abajo el precio y el botón de comprar o encargar.
-- **Productos relacionados** al final de cada producto (se apagan en el editor, sección «Producto 69»).
-- **Buscadores y redes:** el tema incluye títulos y descripciones para compartir enlaces, datos estructurados del producto, de las preguntas frecuentes y de la tienda.
-- **Fuentes propias:** las letras viven dentro del tema (`assets/*.woff2`); ya no se piden a Google, así carga más rápido.
-
 ## Menú superior (catálogos)
 Las categorías se ven siempre arriba, debajo del logo si la pantalla es angosta (se deslizan de lado si no caben).
 Si en Shopify creaste el menú `main-menu`, el tema usa ese menú: ahí debes quitar o agregar enlaces (por ejemplo «Bienestar»).

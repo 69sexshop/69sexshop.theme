@@ -1,0 +1,107 @@
+<section class="collection-head">
+  <div class="container">
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}<div class="section-copy">{{ collection.description }}</div>{%- endif -%}
+  </div>
+</section>
+<section class="collection-body">
+  <div class="container">
+    <form id="CollectionForm" method="get" data-filter-form></form>
+    {%- assign has_filters = false -%}
+    {%- if collection.filters.size > 0 -%}{%- assign has_filters = true -%}{%- endif -%}
+    {%- assign current_sort = collection.sort_by | default: collection.default_sort_by -%}
+
+    <div class="collection-layout" data-collection-layout>
+      <div class="collection-toolbar">
+        {%- if has_filters -%}
+          <button class="btn btn--sm filter-toggle" type="button" data-filter-toggle aria-expanded="false">Filtrar</button>
+        {%- endif -%}
+        <span class="toolbar-count">{{ collection.products_count }} productos</span>
+        {%- if collection.sort_options.size > 1 -%}
+          <label class="sort">
+            <span>Ordenar</span>
+            <select name="sort_by" form="CollectionForm">
+              {%- for option in collection.sort_options -%}
+                <option value="{{ option.value }}"{% if option.value == current_sort %} selected{% endif %}>{{ option.name }}</option>
+              {%- endfor -%}
+            </select>
+          </label>
+        {%- endif -%}
+      </div>
+
+      {%- if has_filters -%}
+        {%- assign any_active = false -%}
+        <div class="chips">
+          {%- for filter in collection.filters -%}
+            {%- for value in filter.active_values -%}
+              {%- assign any_active = true -%}
+              <a class="chip" href="{{ value.url_to_remove }}">{{ value.label }} <span aria-hidden="true">×</span><span class="visually-hidden">Quitar filtro</span></a>
+            {%- endfor -%}
+            {%- if filter.type == 'price_range' and filter.min_value.value != blank or filter.type == 'price_range' and filter.max_value.value != blank -%}
+              {%- assign any_active = true -%}
+              <a class="chip" href="{{ filter.url_to_remove }}">Precio <span aria-hidden="true">×</span><span class="visually-hidden">Quitar filtro</span></a>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- if any_active -%}<a class="chip chip--clear" href="{{ collection.url }}">Limpiar todo</a>{%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="collection-grid-wrap{% unless has_filters %} no-filters{% endunless %}">
+        {%- if has_filters -%}
+          <aside class="filters" aria-label="Filtros">
+            {%- for filter in collection.filters -%}
+              <div class="filter-group" role="group" aria-labelledby="filter-{{ forloop.index }}">
+                <p class="filter-title" id="filter-{{ forloop.index }}">{{ filter.label }}</p>
+                {%- if filter.type == 'price_range' -%}
+                  <div class="price-row">
+                    <input type="number" form="CollectionForm" name="{{ filter.min_value.param_name }}" inputmode="numeric" min="0" placeholder="Desde"
+                      value="{% if filter.min_value.value != blank %}{{ filter.min_value.value | divided_by: 100.0 | round }}{% endif %}" aria-label="Precio mínimo">
+                    <input type="number" form="CollectionForm" name="{{ filter.max_value.param_name }}" inputmode="numeric" min="0" placeholder="Hasta"
+                      value="{% if filter.max_value.value != blank %}{{ filter.max_value.value | divided_by: 100.0 | round }}{% endif %}" aria-label="Precio máximo">
+                  </div>
+                  <p class="filter-hint">Hasta {{ filter.range_max | money }}</p>
+                {%- else -%}
+                  {%- for value in filter.values -%}
+                    <label class="filter-opt{% if value.count == 0 and value.active == false %} is-disabled{% endif %}">
+                      <input type="checkbox" form="CollectionForm" name="{{ value.param_name }}" value="{{ value.value }}"{% if value.active %} checked{% endif %}{% if value.count == 0 and value.active == false %} disabled{% endif %}>
+                      <span>{{ value.label }}</span>
+                      <small>{{ value.count }}</small>
+                    </label>
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+            {%- endfor -%}
+            <noscript><button class="btn btn--sm" type="submit" form="CollectionForm">Aplicar filtros</button></noscript>
+          </aside>
+        {%- endif -%}
+
+        <div class="collection-results">
+          {%- paginate collection.products by 24 -%}
+            {%- if collection.products.size > 0 -%}
+              <div class="product-grid">
+                {%- for product in collection.products -%}
+                  {% render 'product-card', product: product %}
+                {%- endfor -%}
+              </div>
+              {%- if paginate.pages > 1 -%}
+                <nav class="pagination" aria-label="Paginación">
+                  {%- if paginate.previous -%}<a class="btn" href="{{ paginate.previous.url }}">Anterior</a>{%- endif -%}
+                  <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+                  {%- if paginate.next -%}<a class="btn" href="{{ paginate.next.url }}">Siguiente</a>{%- endif -%}
+                </nav>
+              {%- endif -%}
+            {%- else -%}
+              <div class="empty">
+                <p>No hay productos con esos filtros.</p>
+                <a class="btn" href="{{ collection.url }}">Ver toda la colección</a>
+              </div>
+            {%- endif -%}
+          {%- endpaginate -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{"name":"Colección 69","settings":[],"presets":[{"name":"Colección 69"}]}
+{% endschema %}

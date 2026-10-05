@@ -1,0 +1,15 @@
+name: Theme Check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  theme-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisar el tema
+        uses: shopify/theme-check-action@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}

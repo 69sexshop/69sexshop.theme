@@ -343,69 +343,6 @@
     document.body.classList.remove('nav-open');
   });
 
-  /* Modo discreto */
-  function initDiscreet() {
-    var btns = $$('[data-discreet]');
-    if (!btns.length) return;
-    var root = document.documentElement;
-    function paint() {
-      var on = root.classList.contains('discreet');
-      btns.forEach(function (b) {
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        b.setAttribute('aria-label', on ? 'Desactivar modo discreto' : 'Activar modo discreto');
-      });
-    }
-    btns.forEach(function (b) {
-      b.addEventListener('click', function () {
-        var on = root.classList.toggle('discreet');
-        try { localStorage.setItem('69_discreet', on ? '1' : '0'); } catch (e) {}
-        var orig = window.__orig || { title: document.title, icon: '' };
-        document.title = on ? 'Notas' : orig.title;
-        if (window.__setIcon) window.__setIcon(on ? window.__neutralIcon : orig.icon);
-        paint();
-        toast(on ? 'Modo discreto activado' : 'Modo discreto desactivado');
-      });
-    });
-    paint();
-  }
-
-  /* Barra de compra fija en celular */
-  function initSticky() {
-    var bar = $('[data-sticky-buy]');
-    var form = $('form[data-product-form]');
-    if (!bar || !form || !window.IntersectionObserver) return;
-    var btn = $('[data-sticky-btn]', bar);
-    function sync() {
-      var buy = $('[data-buy]');
-      var sold = buy && buy.classList.contains('is-soldout');
-      var add = $('[data-add-btn]');
-      btn.textContent = sold ? 'Encargar producto' : (add ? add.textContent.trim() : 'Agregar al carrito');
-      var cur = $('[data-price-current]');
-      var price = $('[data-sticky-price]', bar);
-      if (cur && price) price.textContent = cur.textContent;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      var e = entries[0];
-      var show = !e.isIntersecting && e.boundingClientRect.top < 0;
-      bar.classList.toggle('is-visible', show);
-      document.body.classList.toggle('sticky-on', show);
-      sync();
-    }, { threshold: 0 });
-    io.observe(form);
-    btn.addEventListener('click', function () {
-      var buy = $('[data-buy]');
-      if (buy && buy.classList.contains('is-soldout')) {
-        var box = $('[data-request-box]');
-        if (box) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else if (form.requestSubmit) {
-        form.requestSubmit();
-      } else {
-        form.submit();
-      }
-    });
-    document.addEventListener('change', sync);
-  }
-
   /* Jugos y recetas */
   function parseAmount(s) {
     s = (s || '').trim().replace(',', '.');
@@ -631,8 +568,6 @@
   }, { passive: true });
   compact();
 
-  initDiscreet();
-  initSticky();
   initSliders();
   initJuices();
   initOptions();
