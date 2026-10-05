@@ -94,6 +94,7 @@
         "c2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Para_El__Lujo_en_Rojo.png",
             "title": "Para él",
             "subtitle": "Energía y resistencia",
             "url": "/collections/para-el"
@@ -102,6 +103,7 @@
         "c3": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Parejas_en_luz_roja_y_sombras.png",
             "title": "Parejas",
             "subtitle": "Para compartir",
             "url": "/collections/parejas"
