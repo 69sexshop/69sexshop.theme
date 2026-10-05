@@ -1,5 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
+    "favicon": "shopify://shop_images/4A951C1C-75E5-4039-974D-FDE7CF2412F9.jpg",
+    "announcement": "Envío discreto · Compra segura · Atención privada",
     "accent": "#E60012",
     "accent_glow": "#FF1020",
     "background": "#050505",
@@ -7,8 +18,23 @@
     "text": "#F5F3EF",
     "muted": "#A7A7A7",
     "show_age_notice": true,
-    "announcement": "Envío discreto · Compra segura · Atención privada",
+    "payment_text": "",
     "whatsapp_message": "Hola, quisiera asesoría para elegir un producto.",
-    "instagram_url": "https://www.instagram.com/69_sexshopp"
+    "instagram_url": "https://www.instagram.com/69_sexshopp",
+    "sections": {
+      "announcement": {
+        "type": "announcement",
+        "settings": {}
+      },
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    },
+    "content_for_index": []
   }
 }
