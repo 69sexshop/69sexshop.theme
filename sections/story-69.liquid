@@ -1,0 +1,29 @@
+<section class="section">
+  <div class="container story">
+    <div class="story-image">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: '' }}
+      {%- endif -%}
+    </div>
+    <div class="story-copy">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.text }}</p>
+      {%- if section.settings.button_label != blank -%}
+        <a class="btn" href="{{ section.settings.url | default: routes.root_url }}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Historia 69",
+  "settings": [
+    {"type":"image_picker","id":"image","label":"Imagen"},
+    {"type":"text","id":"title","label":"Título","default":"El placer también puede ser elegante."},
+    {"type":"textarea","id":"text","label":"Texto","default":"Creamos 69 SEXSHOP para que comprar productos íntimos sea una experiencia moderna, privada y sin prejuicios. Menos ruido, más intención."},
+    {"type":"text","id":"button_label","label":"Texto del botón","default":"Conoce 69 SEXSHOP"},
+    {"type":"url","id":"url","label":"Enlace del botón"}
+  ],
+  "presets": [{"name":"Historia 69"}]
+}
+{% endschema %}

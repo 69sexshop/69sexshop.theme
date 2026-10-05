@@ -1,0 +1,16 @@
+<div class="drawer-overlay" data-drawer-close hidden></div>
+<aside class="drawer" data-drawer aria-hidden="true" aria-label="Carrito">
+  <div class="drawer-head">
+    <strong class="serif">Tu selección</strong>
+    <button class="icon-btn" type="button" data-drawer-close aria-label="Cerrar carrito">{% render 'icon', name: 'close' %}</button>
+  </div>
+  <div class="drawer-body" data-drawer-items></div>
+  <div class="drawer-foot" data-drawer-foot hidden>
+    <div class="total-line"><span>Total</span><strong data-drawer-total></strong></div>
+    <p class="drawer-note">Envío y descuentos se calculan al finalizar la compra.</p>
+    <form action="{{ routes.cart_url }}" method="post">
+      <button class="btn btn--solid btn--block" type="submit" name="checkout">Finalizar compra</button>
+    </form>
+    <a class="drawer-link" href="{{ routes.cart_url }}">Ver carrito completo</a>
+  </div>
+</aside>

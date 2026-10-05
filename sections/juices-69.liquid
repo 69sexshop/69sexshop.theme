@@ -1,0 +1,122 @@
+<section class="section juices" id="jugos" data-juices>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        {%- if section.settings.text != blank -%}<p class="section-copy">{{ section.settings.text }}</p>{%- endif -%}
+      </div>
+    </div>
+
+    <div class="juice-tabs" role="tablist" aria-label="Recetas">
+      {%- for block in section.blocks -%}
+        <button class="juice-tab" type="button" role="tab" id="juice-tab-{{ block.id }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="juice-panel-{{ block.id }}" data-juice-tab {{ block.shopify_attributes }}>{{ block.settings.title }}</button>
+      {%- endfor -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      <article class="juice tone-{{ block.settings.tone }}" role="tabpanel" id="juice-panel-{{ block.id }}" aria-labelledby="juice-tab-{{ block.id }}"{% unless forloop.first %} hidden{% endunless %} data-juice data-title="{{ block.settings.title | escape }}">
+        <div class="juice-media">
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', alt: block.settings.title }}
+          {%- endif -%}
+          <span class="juice-initial serif" aria-hidden="true">{{ block.settings.title | slice: 0 }}</span>
+        </div>
+        <div class="juice-body">
+          <p class="juice-mood">{{ block.settings.subtitle }}{% if block.settings.time != blank %} · {{ block.settings.time }}{% endif %}</p>
+          <h3 class="juice-title serif">{{ block.settings.title }}</h3>
+
+          <div class="juice-servings">
+            <span>Porciones</span>
+            <div class="qty-ctl">
+              <button type="button" data-serv-minus aria-label="Menos porciones">−</button>
+              <span data-serv-count aria-live="polite">2</span>
+              <button type="button" data-serv-plus aria-label="Más porciones">+</button>
+            </div>
+          </div>
+
+          <ul class="juice-ings">
+            {%- assign ing_lines = block.settings.ingredients | newline_to_br | split: '<br />' -%}
+            {%- for line in ing_lines -%}
+              {%- assign clean = line | strip -%}
+              {%- if clean != blank -%}
+                {%- assign parts = clean | split: '|' -%}
+                <li data-ing data-amt="{{ parts[0] | strip | escape }}" data-unit="{{ parts[1] | strip | escape }}" data-name="{{ parts[2] | strip | escape }}">
+                  <label>
+                    <input type="checkbox">
+                    <span class="juice-check" aria-hidden="true"></span>
+                    <span data-ing-text>{{ parts[0] | strip }} {{ parts[1] | strip }} {{ parts[2] | strip }}</span>
+                  </label>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+
+          <ol class="juice-steps">
+            {%- assign step_lines = block.settings.steps | newline_to_br | split: '<br />' -%}
+            {%- for step in step_lines -%}
+              {%- assign s = step | strip -%}
+              {%- if s != blank -%}<li>{{ s }}</li>{%- endif -%}
+            {%- endfor -%}
+          </ol>
+
+          <div class="juice-pair">
+            <p class="juice-pair-title">Acompáñalo con</p>
+            {%- if block.settings.product != blank -%}
+              <a class="juice-product" href="{{ block.settings.product.url }}">
+                {%- if block.settings.product.featured_image -%}
+                  {{ block.settings.product.featured_image | image_url: width: 240 | image_tag: loading: 'lazy', alt: block.settings.product.title }}
+                {%- endif -%}
+                <span><strong>{{ block.settings.product.title }}</strong><small>{{ block.settings.product.price | money }}</small></span>
+              </a>
+            {%- else -%}
+              {%- capture pair_url -%}{% render 'safe-url', url: block.settings.url %}{%- endcapture -%}
+              <a class="btn" href="{{ pair_url | strip }}">Ver {{ block.settings.pairing_label | default: 'productos' }}</a>
+            {%- endif -%}
+          </div>
+
+          <button class="btn btn--sm juice-share" type="button" data-juice-share>Compartir receta</button>
+        </div>
+      </article>
+    {%- endfor -%}
+
+    <p class="juice-note">{{ section.settings.note }}</p>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Jugos y recetas",
+  "max_blocks": 6,
+  "settings": [
+    {"type":"text","id":"title","label":"Título","default":"Jugos afrodisiacos"},
+    {"type":"textarea","id":"text","label":"Texto","default":"Cuatro recetas para preparar en casa, solas o en pareja. Ingredientes que popularmente se asocian con el ambiente romántico."},
+    {"type":"textarea","id":"note","label":"Aviso","default":"Son recetas de bebidas para disfrutar; no son tratamientos ni garantizan efectos. Si tienes alergias o una condición médica, consulta con un profesional de la salud antes de consumirlas."}
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Receta",
+      "settings": [
+        {"type":"text","id":"title","label":"Nombre","default":"Rubí"},
+        {"type":"text","id":"subtitle","label":"Ingredientes principales","default":"Fresa, granada y jengibre"},
+        {"type":"text","id":"time","label":"Tiempo","default":"5 min"},
+        {"type":"select","id":"tone","label":"Color de fondo","default":"rubi","options":[
+          {"value":"rubi","label":"Rubí"},{"value":"cacao","label":"Cacao"},{"value":"sandia","label":"Sandía"},{"value":"mango","label":"Mango"}]},
+        {"type":"image_picker","id":"image","label":"Foto de la receta"},
+        {"type":"textarea","id":"ingredients","label":"Ingredientes (una línea por ingrediente)","info":"Formato: cantidad|unidad|ingrediente. Es para 2 porciones. Ejemplo: 2|taza|de fresas. Sin cantidad: ||Hielo al gusto","default":"2|taza|de fresas\n1|cucharada|de miel"},
+        {"type":"textarea","id":"steps","label":"Preparación (un paso por línea)","default":"Lava las frutas.\nLicúa todo y sirve frío."},
+        {"type":"product","id":"product","label":"Producto de la tienda para acompañar","info":"Si lo eliges, aparece con foto y precio. Si no, se muestra un botón a una colección."},
+        {"type":"text","id":"pairing_label","label":"Nombre de la colección alternativa","default":"Parejas"},
+        {"type":"url","id":"url","label":"Enlace de la colección alternativa"}
+      ]
+    }
+  ],
+  "presets": [
+    {"name":"Jugos y recetas","blocks":[
+      {"type":"recipe","settings":{"title": "Rubí", "subtitle": "Fresa, granada y jengibre", "time": "5 min", "tone": "rubi", "ingredients": "2|taza|de fresas (frescas o congeladas)\n0.5|taza|de granos de granada\n1|trozo|de jengibre fresco (2 cm)\n1|cucharada|de miel (opcional)\n1|taza|de agua fría\n||Hielo al gusto", "steps": "Lava las fresas y retira las hojas.\nLicúa las fresas con la granada, el jengibre pelado, la miel y el agua durante un minuto.\nPrueba y ajusta la dulzura; si quieres, cuélalo.\nSírvelo bien frío, con hielo.", "pairing_label": "Parejas"}},
+      {"type":"recipe","settings":{"title": "Terciopelo", "subtitle": "Cacao, banano y canela", "time": "5 min", "tone": "cacao", "ingredients": "2|banano|\n2|cucharada|de cacao puro en polvo\n1|taza|de leche (o bebida vegetal)\n1|pizca|de canela\n||Hielo al gusto", "steps": "Pela los bananos maduros y trocéalos.\nLicúa con el cacao, la leche y la canela hasta que quede cremoso.\nSírvelo enseguida, con hielo si lo prefieres.", "pairing_label": "Lencería"}},
+      {"type":"recipe","settings":{"title": "Brisa", "subtitle": "Sandía, menta y limón", "time": "5 min", "tone": "sandia", "ingredients": "3|taza|de sandía en cubos (sin semillas)\n10|hoja|de menta fresca\n1|limón|(solo el jugo)\n||Hielo al gusto", "steps": "Licúa la sandía con la menta y el jugo del limón.\nCuela si prefieres una textura más ligera.\nSírvelo con hielo y una hoja de menta.", "pairing_label": "Lubricantes"}},
+      {"type":"recipe","settings":{"title": "Trópico", "subtitle": "Mango, maracuyá y jengibre", "time": "5 min", "tone": "mango", "ingredients": "1|mango|\n2|maracuyá|(solo la pulpa)\n1|taza|de agua fría\n1|cucharadita|de jengibre rallado\n1|cucharada|de miel (opcional)", "steps": "Pela el mango y córtalo en trozos.\nLicúa con la pulpa del maracuyá, el jengibre, la miel y el agua.\nCuela las semillas si prefieres.\nSírvelo muy frío.", "pairing_label": "Combos 69"}}
+    ]}
+  ]
+}
+{% endschema %}

@@ -1,0 +1,85 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="footer-logo" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+          <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" width="400" height="400" loading="lazy">
+        </a>
+        <p>El placer también puede ser elegante. Productos seleccionados, compra privada y envío discreto.</p>
+        <p class="footer-tagline">Tu placer. Nuestra prioridad.</p>
+      </div>
+
+      <div>
+        <div class="footer-title">Tienda</div>
+        <div class="footer-links">
+          {%- assign fmenu = linklists['footer'] -%}
+          {%- if fmenu.links.size > 0 -%}
+            {%- for link in fmenu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+          {%- else -%}
+            <a href="{{ routes.all_products_collection_url }}">Todos los productos</a>
+            {%- assign fallback_shop = 'combos|Combos 69,mas-deseados|Más deseados,novedades|Novedades' | split: ',' -%}
+            {%- for item in fallback_shop -%}
+              {%- assign parts = item | split: '|' -%}
+              {%- assign shop_url = routes.collections_url | append: '/' | append: parts[0] -%}
+              <a href="{% render 'safe-url', url: shop_url %}">{{ parts[1] }}</a>
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Ayuda</div>
+        <div class="footer-links">
+          <a href="{{ routes.root_url }}pages/contacto">Contacto</a>
+          <a href="{{ routes.root_url }}#preguntas">Preguntas frecuentes</a>
+          <a href="{{ routes.root_url }}pages/envios">Envíos</a>
+          <a href="{{ routes.root_url }}pages/pqr">PQR</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Legal</div>
+        <div class="footer-links">
+          {%- assign lmenu = linklists['legal'] -%}
+          {%- if lmenu.links.size > 0 -%}
+            {%- for link in lmenu.links -%}<a href="{{ link.url }}">{{ link.title }}</a>{%- endfor -%}
+          {%- else -%}
+            <a href="{{ routes.root_url }}pages/terminos">Términos y condiciones</a>
+            <a href="{{ routes.root_url }}pages/privacidad">Privacidad y datos</a>
+            <a href="{{ routes.root_url }}pages/garantias">Garantías</a>
+            <a href="{{ routes.root_url }}pages/cookies">Cookies</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- if settings.legal_name != blank or settings.nit != blank or settings.address != blank or settings.contact_email != blank -%}
+      <p class="footer-legal">
+        {%- if settings.legal_name != blank -%}{{ settings.legal_name }}{%- endif -%}
+        {%- if settings.nit != blank -%} · NIT {{ settings.nit }}{%- endif -%}
+        {%- if settings.address != blank -%} · {{ settings.address }}{%- endif -%}
+        {%- if settings.contact_email != blank -%} · {{ settings.contact_email }}{%- endif -%}
+      </p>
+    {%- endif -%}
+
+    {%- if settings.payment_text != blank -%}
+      <p class="footer-pay">{% render 'icon', name: 'shield' %}<span>{{ settings.payment_text }}</span></p>
+    {%- endif -%}
+
+    <div class="footer-bottom">
+      <span>© {{ 'now' | date: '%Y' }} {{ shop.name }}. Venta exclusiva para mayores de 18 años.</span>
+      {%- assign wa = settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' -%}
+      {%- if settings.instagram_url != blank or settings.tiktok_url != blank or wa != blank -%}
+        <div class="socials-sm">
+          <span>Síguenos</span>
+          {%- if settings.instagram_url != blank -%}<a href="{{ settings.instagram_url }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+          {%- if settings.tiktok_url != blank -%}<a href="{{ settings.tiktok_url }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+          {%- if wa != blank -%}<a href="https://wa.me/{{ wa }}" target="_blank" rel="noopener" aria-label="WhatsApp">{% render 'icon', name: 'whatsapp' %}</a>{%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+{% schema %}
+{"name":"Footer","settings":[]}
+{% endschema %}
