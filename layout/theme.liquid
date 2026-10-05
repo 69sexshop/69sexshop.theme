@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="{{ settings.background | default: '#050505' }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 96 }}">
+    {%- endif -%}
+    <title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
+    {%- assign seo_description = page_description | default: shop.description -%}
+    {%- if seo_description != blank -%}
+      <meta name="description" content="{{ seo_description | escape }}">
+      <meta property="og:description" content="{{ seo_description | escape }}">
+    {%- endif -%}
+    <meta property="og:site_name" content="{{ shop.name | escape }}">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:title" content="{{ page_title | escape }}">
+    <meta property="og:type" content="{% if template.name == 'product' %}product{% else %}website{% endif %}">
+    {%- if template.name == 'product' and product.featured_image != blank -%}
+      <meta property="og:image" content="https:{{ product.featured_image | image_url: width: 1200 }}">
+    {%- elsif settings.logo != blank -%}
+      <meta property="og:image" content="https:{{ settings.logo | image_url: width: 1200 }}">
+    {%- else -%}
+      <meta property="og:image" content="https:{{ 'logo.png' | asset_url }}">
+    {%- endif -%}
+    <meta name="twitter:card" content="summary_large_image">
+    {%- if template.name == 'index' -%}
+      <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": {{ shop.name | json }},
+          "url": {{ shop.url | json }},
+          "logo": {{ 'logo.png' | asset_url | prepend: 'https:' | json }}{% if settings.instagram_url != blank or settings.tiktok_url != blank %},
+          "sameAs": [{% if settings.instagram_url != blank %}{{ settings.instagram_url | json }}{% endif %}{% if settings.instagram_url != blank and settings.tiktok_url != blank %}, {% endif %}{% if settings.tiktok_url != blank %}{{ settings.tiktok_url | json }}{% endif %}]{% endif %}
+        }
+      </script>
+    {%- endif -%}
+    {{ content_for_header }}
+    <style>
+      :root{
+        --accent:{{ settings.accent | default: '#E60012' }};
+        --accent-2:{{ settings.accent_glow | default: '#FF1020' }};
+        --bg:{{ settings.background | default: '#050505' }};
+        --surface:{{ settings.surface | default: '#111111' }};
+        --text:{{ settings.text | default: '#F5F3EF' }};
+        --muted:{{ settings.muted | default: '#A7A7A7' }};
+      }
+    </style>
+    {% # theme-check-disable AssetPreload %}
+    <link rel="preload" href="{{ 'dm-sans-400.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="{{ 'playfair-500.woff2' | asset_url }}" as="font" type="font/woff2" crossorigin>
+    {% # theme-check-enable AssetPreload %}
+    <style>
+      @font-face{font-family:'DM Sans';font-style:normal;font-weight:400;font-display:swap;src:url({{ 'dm-sans-400.woff2' | asset_url }}) format('woff2')}
+      @font-face{font-family:'DM Sans';font-style:normal;font-weight:500;font-display:swap;src:url({{ 'dm-sans-500.woff2' | asset_url }}) format('woff2')}
+      @font-face{font-family:'DM Sans';font-style:normal;font-weight:600;font-display:swap;src:url({{ 'dm-sans-600.woff2' | asset_url }}) format('woff2')}
+      @font-face{font-family:'DM Sans';font-style:normal;font-weight:700;font-display:swap;src:url({{ 'dm-sans-700.woff2' | asset_url }}) format('woff2')}
+      @font-face{font-family:'Playfair Display';font-style:normal;font-weight:500;font-display:swap;src:url({{ 'playfair-500.woff2' | asset_url }}) format('woff2')}
+      @font-face{font-family:'Playfair Display';font-style:italic;font-weight:500;font-display:swap;src:url({{ 'playfair-500-italic.woff2' | asset_url }}) format('woff2')}
+    </style>
+    {{ 'styles.css' | asset_url | stylesheet_tag }}
+    <script>
+      window.theme = {
+        currency: {{ cart.currency.iso_code | json }},
+        routes: {
+          cart: {{ routes.cart_url | json }},
+          all: {{ routes.all_products_collection_url | json }},
+          cartJs: {{ routes.cart_url | append: '.js' | json }},
+          cartAdd: {{ routes.cart_add_url | append: '.js' | json }},
+          cartChange: {{ routes.cart_change_url | append: '.js' | json }},
+          products: {{ routes.root_url | append: 'products/' | json }}
+        }
+      };
+      {%- if settings.show_age_notice -%}
+      try { if (!localStorage.getItem('69_age_ok')) { document.documentElement.classList.add('age-lock'); } }
+      catch (e) { document.documentElement.classList.add('age-lock'); }
+      {%- endif -%}
+    </script>
+    <script>
+      /* Modo discreto: se aplica antes de pintar para que no haya parpadeo */
+      window.__orig = { title: document.title, icon: (document.querySelector('link[rel~="icon"]') || {}).href || '' };
+      window.__neutralIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23888'/%3E%3C/svg%3E";
+      window.__setIcon = function (href) {
+        var l = document.querySelector('link[rel~="icon"]');
+        if (!l) { l = document.createElement('link'); l.rel = 'icon'; document.head.appendChild(l); }
+        if (href) { l.href = href; }
+      };
+      try {
+        if (localStorage.getItem('69_discreet') === '1') {
+          document.documentElement.classList.add('discreet');
+          document.title = 'Notas';
+          window.__setIcon(window.__neutralIcon);
+        }
+      } catch (e) {}
+    </script>
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </head>
+  <body class="template-{{ template.name }}{% if template.suffix != blank %} template-{{ template.suffix }}{% endif %}">
+    <a class="skip-link" href="#MainContent">Saltar al contenido</a>
+    {% section 'announcement' %}
+    {% section 'header' %}
+    <main id="MainContent" role="main">{{ content_for_layout }}</main>
+    {% section 'footer' %}
+    {% render 'cart-drawer' %}
+    {%- if settings.show_age_notice -%}
+      {% render 'age-gate' %}
+    {%- endif -%}
+    {%- if settings.show_advisor -%}
+      {% render 'advisor' %}
+    {%- endif -%}
+    {%- assign wa = settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' -%}
+    {%- capture wa_href -%}
+      {%- if wa != blank -%}https://wa.me/{{ wa }}{% if settings.whatsapp_message != blank %}?text={{ settings.whatsapp_message | url_encode }}{% endif %}{%- else -%}{{ routes.root_url }}pages/contacto{%- endif -%}
+    {%- endcapture -%}
+    <a class="wa-float" href="{{ wa_href | strip }}"{% if wa != blank %} target="_blank" rel="noopener"{% endif %} aria-label="Escribir por WhatsApp">
+      {% render 'icon', name: 'whatsapp' %}
+    </a>
+    <div class="toast" id="Toast" role="status" aria-live="polite"></div>
+  </body>
+</html>

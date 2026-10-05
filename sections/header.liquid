@@ -1,0 +1,45 @@
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+      {%- if settings.logo != blank -%}
+        {{ settings.logo | image_url: width: 400 | image_tag: alt: shop.name, loading: 'eager' }}
+      {%- else -%}
+        <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" width="400" height="400">
+      {%- endif -%}
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      {%- assign menu = linklists['main-menu'] -%}
+      {%- if menu.links.size > 0 -%}
+        {%- for link in menu.links limit: 8 -%}
+          <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+        {%- endfor -%}
+      {%- else -%}
+        <a href="{{ routes.root_url }}">Inicio</a>
+        <a href="{{ routes.all_products_collection_url }}">Tienda</a>
+        {%- assign fallback_nav = 'para-ella|Para ella,para-el|Para él,parejas|Parejas,lenceria|Lencería,lubricantes|Lubricantes' | split: ',' -%}
+        {%- for item in fallback_nav -%}
+          {%- assign parts = item | split: '|' -%}
+          {%- assign nav_url = routes.collections_url | append: '/' | append: parts[0] -%}
+          <a href="{% render 'safe-url', url: nav_url %}">{{ parts[1] }}</a>
+        {%- endfor -%}
+      {%- endif -%}
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn discreet-btn" type="button" data-discreet aria-pressed="false" aria-label="Activar modo discreto" title="Modo discreto: desenfoca las imágenes y oculta el nombre de la pestaña">
+        <span class="i-off">{% render 'icon', name: 'eye' %}</span><span class="i-on">{% render 'icon', name: 'eye-off' %}</span>
+      </button>
+      <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Buscar">{% render 'icon', name: 'search' %}</a>
+      <a class="icon-btn" href="{{ routes.root_url }}pages/favoritos" aria-label="Favoritos">
+        {% render 'icon', name: 'heart' %}<span class="count" data-fav-count hidden>0</span>
+      </a>
+      <a class="icon-btn" href="{{ routes.cart_url }}" data-drawer-open aria-label="Carrito">
+        {% render 'icon', name: 'bag' %}<span class="count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+{% schema %}
+{"name":"Header","settings":[]}
+{% endschema %}

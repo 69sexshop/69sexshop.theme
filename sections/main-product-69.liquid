@@ -1,0 +1,194 @@
+<script type="application/ld+json">{{ product | structured_data }}</script>
+{%- assign current = product.selected_or_first_available_variant -%}
+<section class="container product-page">
+  <div class="product-gallery">
+    {%- for image in product.images -%}
+      {%- assign alt_text = image.alt | default: product.title -%}
+      {{ image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '600, 900, 1200', sizes: '(min-width: 1000px) 28vw, 100vw', alt: alt_text }}
+    {%- endfor -%}
+  </div>
+  <div class="product-info">
+    <h1>{{ product.title }}</h1>
+    <div class="price">
+      <span data-price-current>{{ current.price | money }}</span>
+      <s class="price-old" data-price-compare{% unless current.compare_at_price > current.price %} hidden{% endunless %}>{{ current.compare_at_price | money }}</s>
+    </div>
+
+    {%- assign wa = settings.whatsapp_number | remove: '+' | remove: ' ' | remove: '-' -%}
+    {%- assign backorder = false -%}
+    {%- if current.available and current.inventory_management != blank and current.inventory_policy == 'continue' and current.inventory_quantity <= 0 -%}
+      {%- assign backorder = true -%}
+    {%- endif -%}
+
+    <div class="product-buy{% unless current.available %} is-soldout{% endunless %}" data-buy>
+      {% form 'product', product, class: 'add-form', data-product-form: true %}
+        {%- unless product.has_only_default_variant -%}
+          <div class="options" data-options>
+            {%- for option in product.options_with_values -%}
+              {%- assign option_name = option.name | downcase -%}
+              <div class="option" role="radiogroup" aria-labelledby="opt-{{ forloop.index0 }}" data-option>
+                <p class="option-name" id="opt-{{ forloop.index0 }}">
+                  <span>{{ option.name }}</span>
+                  {%- if section.settings.size_guide != blank and option_name == 'talla' -%}
+                    <a class="size-guide" href="{{ section.settings.size_guide.url }}">Guía de tallas</a>
+                  {%- endif -%}
+                </p>
+                <div class="chip-row">
+                  {%- for value in option.values -%}
+                    <label class="size-chip">
+                      <input type="radio" name="option-{{ forloop.parentloop.index0 }}" value="{{ value | escape }}"{% if option.selected_value == value %} checked{% endif %}>
+                      <span>{{ value }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+          <script type="application/json" data-variants>{{ product.variants | json }}</script>
+        {%- endunless -%}
+        <input type="hidden" name="id" value="{{ current.id }}" data-variant-id>
+        <input class="qty" type="number" name="quantity" value="1" min="1" aria-label="Cantidad">
+        <button class="btn btn--solid" type="submit" data-add-btn>
+          {%- if backorder -%}Encargar{%- else -%}Agregar al carrito{%- endif -%}
+        </button>
+        <a class="btn btn--solid request-btn" href="#Encargo">Encargar producto</a>
+        <button class="fav-btn fav-btn--inline" type="button" data-fav data-handle="{{ product.handle }}" aria-pressed="false" aria-label="Guardar en favoritos">{% render 'icon', name: 'heart' %}</button>
+      {% endform %}
+
+      {%- if backorder -%}
+        <p class="backorder-note">{{ section.settings.backorder_text }}</p>
+      {%- endif -%}
+
+      <div class="request-box" data-request-box>
+        <h2 class="serif">{{ section.settings.request_title }}</h2>
+        <p>{{ section.settings.request_text }}</p>
+        {% form 'contact', id: 'Encargo', class: 'request-form' %}
+          {%- if form.posted_successfully? -%}
+            <p class="request-ok">¡Listo! Recibimos tu encargo y te escribiremos pronto.</p>
+          {%- else -%}
+            {%- if form.errors -%}
+              <p class="request-error">{{ form.errors | default_errors }}</p>
+            {%- endif -%}
+            <input type="hidden" name="contact[Producto]" value="{{ product.title | escape }}">
+            <input type="hidden" name="contact[Opción]" value="{{ current.title | escape }}" data-request-variant>
+            <input type="hidden" name="contact[Enlace]" value="{{ shop.url }}{{ product.url }}">
+            <div class="request-row">
+              <div class="field">
+                <label for="EncargoNombre">Nombre</label>
+                <input id="EncargoNombre" type="text" name="contact[name]" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="EncargoTel">Teléfono o WhatsApp</label>
+                <input id="EncargoTel" type="tel" name="contact[phone]" autocomplete="tel" required>
+              </div>
+            </div>
+            <div class="request-row">
+              <div class="field">
+                <label for="EncargoEmail">Correo</label>
+                <input id="EncargoEmail" type="email" name="contact[email]" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="EncargoCant">Cantidad</label>
+                <input id="EncargoCant" type="number" name="contact[Cantidad]" value="1" min="1">
+              </div>
+            </div>
+            <div class="field">
+              <label for="EncargoNota">Nota (opcional)</label>
+              <textarea id="EncargoNota" name="contact[body]" rows="2"></textarea>
+            </div>
+            <button class="btn btn--solid btn--block" type="submit">Enviar encargo</button>
+            <p class="request-legal">Usaremos tus datos solo para responder este encargo. Más información en <a href="{{ routes.root_url }}pages/privacidad">Privacidad y datos</a>.</p>
+          {%- endif -%}
+        {% endform %}
+        {%- if wa != blank -%}
+          {%- capture wa_text -%}Hola, quisiera encargar este producto: {{ product.title }} ({variant}). {{ shop.url }}{{ product.url }}{%- endcapture -%}
+          <a class="btn btn--block request-wa" href="https://wa.me/{{ wa }}?text={{ wa_text | replace: '{variant}', current.title | url_encode }}" data-request-wa data-base="https://wa.me/{{ wa }}" data-text="{{ wa_text | escape }}" target="_blank" rel="noopener">Encargar por WhatsApp</a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <ul class="product-assurance">
+      {%- if section.settings.assurance_1 != blank -%}<li>{% render 'icon', name: 'box' %}<span>{{ section.settings.assurance_1 }}</span></li>{%- endif -%}
+      {%- if section.settings.assurance_2 != blank -%}<li>{% render 'icon', name: 'shield' %}<span>{{ section.settings.assurance_2 }}</span></li>{%- endif -%}
+      {%- if section.settings.assurance_3 != blank -%}<li>{% render 'icon', name: 'chat' %}<span>{{ section.settings.assurance_3 }}</span></li>{%- endif -%}
+    </ul>
+
+    <div class="product-details">
+      {%- if product.description != blank -%}
+        <details class="faq-item" open>
+          <summary>{{ section.settings.description_title }}</summary>
+          <div class="faq-answer rte">{{ product.description }}</div>
+        </details>
+      {%- endif -%}
+      {%- assign usage = product.metafields.custom.modo_de_uso -%}
+      {%- if usage != blank -%}
+        <details class="faq-item" open>
+          <summary>{{ section.settings.usage_title }}</summary>
+          <div class="faq-answer rte">{{ usage | metafield_tag }}</div>
+        </details>
+      {%- elsif request.design_mode -%}
+        <p class="draft-note">Vista del editor: este producto no tiene «Modo de uso». Agrégalo en el producto, en Metacampos → Modo de uso.</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<div class="sticky-buy" data-sticky-buy>
+  <div class="sticky-buy-info">
+    <strong>{{ product.title }}</strong>
+    <span data-sticky-price>{{ current.price | money }}</span>
+  </div>
+  <button class="btn btn--solid" type="button" data-sticky-btn>{% if current.available %}Agregar al carrito{% else %}Encargar producto{% endif %}</button>
+</div>
+
+{%- if section.settings.show_related -%}
+  {%- assign related_handle = '' -%}
+  {%- for c in product.collections -%}
+    {%- if related_handle == '' and c.handle != 'all' and c.handle != 'frontpage' -%}
+      {%- assign related_handle = c.handle -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- assign related_collection = collections[related_handle] -%}
+  {%- if related_collection != blank -%}
+    {%- capture related_html -%}
+      {%- assign related_count = 0 -%}
+      {%- for item in related_collection.products -%}
+        {%- if item.id != product.id and related_count < 4 -%}
+          {% render 'product-card', product: item %}
+          {%- assign related_count = related_count | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+    {%- if related_html contains 'product-card' -%}
+      <section class="section related">
+        <div class="container">
+          <h2 class="section-title">{{ section.settings.related_title }}</h2>
+          <div class="product-grid product-rail">{{ related_html }}</div>
+        </div>
+      </section>
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{% schema %}
+{
+  "name": "Producto 69",
+  "settings": [
+    {"type":"page","id":"size_guide","label":"Página de guía de tallas (opcional)","info":"Si eliges una página, aparece el enlace «Guía de tallas» junto a la talla."},
+    {"type":"header","content":"Productos relacionados"},
+    {"type":"checkbox","id":"show_related","label":"Mostrar productos relacionados","default":true},
+    {"type":"text","id":"related_title","label":"Título","default":"También te puede interesar"},
+    {"type":"header","content":"Descripción y modo de uso"},
+    {"type":"text","id":"description_title","label":"Título de la descripción","default":"Descripción"},
+    {"type":"text","id":"usage_title","label":"Título del modo de uso","default":"Modo de uso"},
+    {"type":"header","content":"Encargar producto"},
+    {"type":"text","id":"request_title","label":"Título de la zona de encargo","default":"Encargar este producto"},
+    {"type":"textarea","id":"request_text","label":"Texto de la zona de encargo","default":"Este producto está agotado por ahora. Déjanos tus datos y te escribimos para ayudarte a encargarlo."},
+    {"type":"textarea","id":"backorder_text","label":"Aviso cuando se vende bajo pedido","default":"Producto por encargo. Te confirmamos el tiempo de entrega después de tu pedido."},
+    {"type":"header","content":"Garantías"},
+    {"type":"text","id":"assurance_1","label":"Garantía 1","default":"Se envía en empaque neutro"},
+    {"type":"text","id":"assurance_2","label":"Garantía 2","default":"Pago seguro con Wompi"},
+    {"type":"text","id":"assurance_3","label":"Garantía 3","default":"Asesoría privada por WhatsApp"}
+  ],
+  "presets": [{"name":"Producto 69"}]
+}
+{% endschema %}
