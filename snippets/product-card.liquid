@@ -2,7 +2,6 @@
   <button class="fav-btn" type="button" data-fav data-handle="{{ product.handle }}" aria-pressed="false" aria-label="Guardar {{ product.title | escape }} en favoritos">{% render 'icon', name: 'heart' %}</button>
   <a class="product-link" href="{{ product.url }}">
     <div class="product-image">
-      {%- assign card_variant = product.selected_or_first_available_variant -%}
       {%- if product.available == false -%}
         <span class="badge badge--out">Agotado</span>
       {%- elsif product.compare_at_price > product.price -%}

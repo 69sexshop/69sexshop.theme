@@ -27,9 +27,6 @@
     </nav>
 
     <div class="header-actions">
-      <button class="icon-btn discreet-btn" type="button" data-discreet aria-pressed="false" aria-label="Activar modo discreto" title="Modo discreto: desenfoca las imágenes y oculta el nombre de la pestaña">
-        <span class="i-off">{% render 'icon', name: 'eye' %}</span><span class="i-on">{% render 'icon', name: 'eye-off' %}</span>
-      </button>
       <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Buscar">{% render 'icon', name: 'search' %}</a>
       <a class="icon-btn" href="{{ routes.root_url }}pages/favoritos" aria-label="Favoritos">
         {% render 'icon', name: 'heart' %}<span class="count" data-fav-count hidden>0</span>

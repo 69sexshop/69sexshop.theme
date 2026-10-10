@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -24,7 +33,9 @@
             "line_3": "regalar.",
             "text": "Elige un combo armado y recíbelo en empaque neutro.",
             "button_label": "Ver combos",
-            "button_url": "/collections/combos"
+            "button_url": "/collections/combos",
+            "button2_label": "",
+            "button2_url": ""
           }
         },
         "s3": {
@@ -35,7 +46,9 @@
             "line_3": "como tú.",
             "text": "Piezas seleccionadas para sentirte sensual, con estilo.",
             "button_label": "Ver lencería",
-            "button_url": "/collections/lenceria"
+            "button_url": "/collections/lenceria",
+            "button2_label": "",
+            "button2_url": ""
           }
         },
         "s4": {
@@ -46,7 +59,9 @@
             "line_3": "de la tienda.",
             "text": "Una selección corta para elegir sin dudar.",
             "button_label": "Ver más deseados",
-            "button_url": "/collections/mas-deseados"
+            "button_url": "/collections/mas-deseados",
+            "button2_label": "",
+            "button2_url": ""
           }
         }
       },
@@ -55,7 +70,14 @@
         "s2",
         "s3",
         "s4"
-      ]
+      ],
+      "settings": {
+        "autoplay": true,
+        "interval": 6,
+        "guarantee_1": "Envío discreto",
+        "guarantee_2": "Pago seguro",
+        "guarantee_3": "Privacidad total"
+      }
     },
     "categories": {
       "type": "categories-69",
@@ -63,6 +85,7 @@
         "c1": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Para_Ella__Elegancia_en_Rojo.png",
             "title": "Para ella",
             "subtitle": "Pensado para ella",
             "url": "/collections/para-ella"
@@ -71,6 +94,7 @@
         "c2": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Para_El__Lujo_en_Rojo.png",
             "title": "Para él",
             "subtitle": "Energía y resistencia",
             "url": "/collections/para-el"
@@ -79,6 +103,7 @@
         "c3": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Parejas_en_luz_roja_y_sombras.png",
             "title": "Parejas",
             "subtitle": "Para compartir",
             "url": "/collections/parejas"
@@ -87,6 +112,7 @@
         "c4": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Lenceria_negra_bajo_luces_rojas.png",
             "title": "Lencería",
             "subtitle": "Sensualidad",
             "url": "/collections/lenceria"
@@ -95,6 +121,7 @@
         "c5": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Anuncio_glamuroso_de_lubricantes_en_rojo_y_negro.png",
             "title": "Lubricantes",
             "subtitle": "Comodidad y juego",
             "url": "/collections/lubricantes"
@@ -107,10 +134,20 @@
         "c3",
         "c4",
         "c5"
-      ]
+      ],
+      "settings": {
+        "title": "¿Qué estás buscando?",
+        "text": "Una navegación sencilla para llegar rápido a lo que quieres."
+      }
     },
     "featured": {
-      "type": "featured-products"
+      "type": "featured-products",
+      "settings": {
+        "title": "La selección",
+        "text": "Pocos productos, bien elegidos.",
+        "collection": "",
+        "products_to_show": 8
+      }
     },
     "combos": {
       "type": "combos-69",
@@ -120,6 +157,7 @@
           "settings": {
             "title": "Combo Rompe Diablas",
             "badge": "Más vendido",
+            "product": "",
             "url": "/collections/combos"
           }
         },
@@ -127,6 +165,8 @@
           "type": "combo",
           "settings": {
             "title": "Combo Titán",
+            "badge": "",
+            "product": "",
             "url": "/collections/combos"
           }
         },
@@ -134,6 +174,8 @@
           "type": "combo",
           "settings": {
             "title": "Combo Destroyer",
+            "badge": "",
+            "product": "",
             "url": "/collections/combos"
           }
         },
@@ -141,6 +183,8 @@
           "type": "combo",
           "settings": {
             "title": "Combo Pecado",
+            "badge": "",
+            "product": "",
             "url": "/collections/combos"
           }
         },
@@ -148,6 +192,8 @@
           "type": "combo",
           "settings": {
             "title": "Combo 69",
+            "badge": "",
+            "product": "",
             "url": "/collections/combos"
           }
         }
@@ -158,7 +204,83 @@
         "k3",
         "k4",
         "k5"
-      ]
+      ],
+      "settings": {
+        "title": "Los combos 69",
+        "text": "Combinaciones pensadas para regalar, probar o compartir, en empaque neutro."
+      }
+    },
+    "juices": {
+      "type": "juices-69",
+      "blocks": {
+        "j1": {
+          "type": "recipe",
+          "settings": {
+            "title": "Rubí",
+            "subtitle": "Fresa, granada y jengibre",
+            "time": "5 min",
+            "tone": "rubi",
+            "ingredients": "2|taza|de fresas (frescas o congeladas)\n0.5|taza|de granos de granada\n1|trozo|de jengibre fresco (2 cm)\n1|cucharada|de miel (opcional)\n1|taza|de agua fría\n||Hielo al gusto",
+            "steps": "Lava las fresas y retira las hojas.\nLicúa las fresas con la granada, el jengibre pelado, la miel y el agua durante un minuto.\nPrueba y ajusta la dulzura; si quieres, cuélalo.\nSírvelo bien frío, con hielo.",
+            "product": "",
+            "pairing_label": "Parejas",
+            "url": "/collections/parejas"
+          }
+        },
+        "j2": {
+          "type": "recipe",
+          "settings": {
+            "title": "Terciopelo",
+            "subtitle": "Cacao, banano y canela",
+            "time": "5 min",
+            "tone": "cacao",
+            "ingredients": "2|banano|\n2|cucharada|de cacao puro en polvo\n1|taza|de leche (o bebida vegetal)\n1|pizca|de canela\n||Hielo al gusto",
+            "steps": "Pela los bananos maduros y trocéalos.\nLicúa con el cacao, la leche y la canela hasta que quede cremoso.\nSírvelo enseguida, con hielo si lo prefieres.",
+            "product": "",
+            "pairing_label": "Lencería",
+            "url": "/collections/lenceria"
+          }
+        },
+        "j3": {
+          "type": "recipe",
+          "settings": {
+            "title": "Brisa",
+            "subtitle": "Sandía, menta y limón",
+            "time": "5 min",
+            "tone": "sandia",
+            "ingredients": "3|taza|de sandía en cubos (sin semillas)\n10|hoja|de menta fresca\n1|limón|(solo el jugo)\n||Hielo al gusto",
+            "steps": "Licúa la sandía con la menta y el jugo del limón.\nCuela si prefieres una textura más ligera.\nSírvelo con hielo y una hoja de menta.",
+            "product": "",
+            "pairing_label": "Lubricantes",
+            "url": "/collections/lubricantes"
+          }
+        },
+        "j4": {
+          "type": "recipe",
+          "settings": {
+            "title": "Trópico",
+            "subtitle": "Mango, maracuyá y jengibre",
+            "time": "5 min",
+            "tone": "mango",
+            "ingredients": "1|mango|\n2|maracuyá|(solo la pulpa)\n1|taza|de agua fría\n1|cucharadita|de jengibre rallado\n1|cucharada|de miel (opcional)",
+            "steps": "Pela el mango y córtalo en trozos.\nLicúa con la pulpa del maracuyá, el jengibre, la miel y el agua.\nCuela las semillas si prefieres.\nSírvelo muy frío.",
+            "product": "",
+            "pairing_label": "Combos 69",
+            "url": "/collections/combos"
+          }
+        }
+      },
+      "block_order": [
+        "j1",
+        "j2",
+        "j3",
+        "j4"
+      ],
+      "settings": {
+        "title": "Jugos afrodisiacos",
+        "text": "Cuatro recetas para preparar en casa, solas o en pareja. Ingredientes que popularmente se asocian con el ambiente romántico.",
+        "note": "Son recetas de bebidas para disfrutar; no son tratamientos ni garantizan efectos. Si tienes alergias o una condición médica, consulta con un profesional de la salud antes de consumirlas."
+      }
     },
     "trust": {
       "type": "trust-69",
@@ -201,7 +323,10 @@
         "t2",
         "t3",
         "t4"
-      ]
+      ],
+      "settings": {
+        "title": "Tu privacidad es parte de la experiencia."
+      }
     },
     "finder": {
       "type": "finder-69",
@@ -256,10 +381,20 @@
         "f4",
         "f6",
         "f7"
-      ]
+      ],
+      "settings": {
+        "title": "¿No sabes qué elegir?",
+        "text": "Cuéntanos qué buscas y te mostramos una selección hecha para eso."
+      }
     },
     "story": {
-      "type": "story-69"
+      "type": "story-69",
+      "settings": {
+        "title": "El placer también puede ser elegante.",
+        "text": "Creamos 69 SEXSHOP para que comprar productos íntimos sea una experiencia moderna, privada y sin prejuicios. Menos ruido, más intención.",
+        "button_label": "Conoce 69 SEXSHOP",
+        "url": ""
+      }
     },
     "faq": {
       "type": "faq-69",
@@ -314,70 +449,12 @@
         "q4",
         "q5",
         "q6"
-      ]
-    },
-    "juices": {
-      "type": "juices-69",
-      "blocks": {
-        "j1": {
-          "type": "recipe",
-          "settings": {
-            "title": "Rubí",
-            "subtitle": "Fresa, granada y jengibre",
-            "time": "5 min",
-            "tone": "rubi",
-            "ingredients": "2|taza|de fresas (frescas o congeladas)\n0.5|taza|de granos de granada\n1|trozo|de jengibre fresco (2 cm)\n1|cucharada|de miel (opcional)\n1|taza|de agua fría\n||Hielo al gusto",
-            "steps": "Lava las fresas y retira las hojas.\nLicúa las fresas con la granada, el jengibre pelado, la miel y el agua durante un minuto.\nPrueba y ajusta la dulzura; si quieres, cuélalo.\nSírvelo bien frío, con hielo.",
-            "pairing_label": "Parejas",
-            "url": "/collections/parejas"
-          }
-        },
-        "j2": {
-          "type": "recipe",
-          "settings": {
-            "title": "Terciopelo",
-            "subtitle": "Cacao, banano y canela",
-            "time": "5 min",
-            "tone": "cacao",
-            "ingredients": "2|banano|\n2|cucharada|de cacao puro en polvo\n1|taza|de leche (o bebida vegetal)\n1|pizca|de canela\n||Hielo al gusto",
-            "steps": "Pela los bananos maduros y trocéalos.\nLicúa con el cacao, la leche y la canela hasta que quede cremoso.\nSírvelo enseguida, con hielo si lo prefieres.",
-            "pairing_label": "Lencería",
-            "url": "/collections/lenceria"
-          }
-        },
-        "j3": {
-          "type": "recipe",
-          "settings": {
-            "title": "Brisa",
-            "subtitle": "Sandía, menta y limón",
-            "time": "5 min",
-            "tone": "sandia",
-            "ingredients": "3|taza|de sandía en cubos (sin semillas)\n10|hoja|de menta fresca\n1|limón|(solo el jugo)\n||Hielo al gusto",
-            "steps": "Licúa la sandía con la menta y el jugo del limón.\nCuela si prefieres una textura más ligera.\nSírvelo con hielo y una hoja de menta.",
-            "pairing_label": "Lubricantes",
-            "url": "/collections/lubricantes"
-          }
-        },
-        "j4": {
-          "type": "recipe",
-          "settings": {
-            "title": "Trópico",
-            "subtitle": "Mango, maracuyá y jengibre",
-            "time": "5 min",
-            "tone": "mango",
-            "ingredients": "1|mango|\n2|maracuyá|(solo la pulpa)\n1|taza|de agua fría\n1|cucharadita|de jengibre rallado\n1|cucharada|de miel (opcional)",
-            "steps": "Pela el mango y córtalo en trozos.\nLicúa con la pulpa del maracuyá, el jengibre, la miel y el agua.\nCuela las semillas si prefieres.\nSírvelo muy frío.",
-            "pairing_label": "Combos 69",
-            "url": "/collections/combos"
-          }
-        }
-      },
-      "block_order": [
-        "j1",
-        "j2",
-        "j3",
-        "j4"
-      ]
+      ],
+      "settings": {
+        "title": "Preguntas frecuentes",
+        "text": "Lo que más nos preguntan, resuelto en pocas líneas.",
+        "button_label": "¿Otra duda? Escríbenos"
+      }
     }
   },
   "order": [
