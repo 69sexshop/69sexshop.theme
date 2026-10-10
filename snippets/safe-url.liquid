@@ -1,0 +1,5 @@
+{%- assign u = url | default: routes.all_products_collection_url -%}
+{%- if u contains '/collections/' and u != routes.all_products_collection_url -%}
+  {%- assign h = u | split: '/collections/' | last | split: '?' | first | split: '/' | first -%}
+  {%- if collections[h].handle != blank -%}{{ u }}{%- else -%}{{ routes.all_products_collection_url }}{%- endif -%}
+{%- else -%}{{ u }}{%- endif -%}

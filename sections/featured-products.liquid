@@ -1,0 +1,35 @@
+{%- assign selected = section.settings.collection -%}
+<section class="section section--light" id="seleccion">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        {%- if section.settings.text != blank -%}<p class="section-copy">{{ section.settings.text }}</p>{%- endif -%}
+      </div>
+      <a class="btn" href="{{ selected.url | default: routes.all_products_collection_url }}">Ver todo</a>
+    </div>
+    <div class="product-grid product-rail">
+      {%- if selected != blank -%}
+        {%- for product in selected.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- else -%}
+        {%- for product in collections.all.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product %}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Productos destacados",
+  "settings": [
+    {"type":"text","id":"title","label":"Título","default":"La selección"},
+    {"type":"textarea","id":"text","label":"Texto","default":"Pocos productos, bien elegidos."},
+    {"type":"collection","id":"collection","label":"Colección"},
+    {"type":"range","id":"products_to_show","label":"Productos a mostrar","min":4,"max":12,"step":1,"default":8}
+  ],
+  "presets": [{"name":"Productos destacados"}]
+}
+{% endschema %}

@@ -1,0 +1,36 @@
+<section class="collection-head">
+  <div class="container">
+    <h1>{% if search.performed %}Resultados{% else %}Buscar{% endif %}</h1>
+    <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="¿Qué estás buscando?" aria-label="Buscar productos">
+      <button class="btn btn--solid" type="submit">Buscar</button>
+    </form>
+  </div>
+</section>
+<section class="collection-body">
+  <div class="container">
+    {%- if search.performed -%}
+      {%- paginate search.results by 24 -%}
+        {%- if search.results_count > 0 -%}
+          <div class="product-grid">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}{%- endif -%}
+            {%- endfor -%}
+          </div>
+          {%- if paginate.pages > 1 -%}
+            <nav class="pagination" aria-label="Paginación">
+              {%- if paginate.previous -%}<a class="btn" href="{{ paginate.previous.url }}">Anterior</a>{%- endif -%}
+              <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+              {%- if paginate.next -%}<a class="btn" href="{{ paginate.next.url }}">Siguiente</a>{%- endif -%}
+            </nav>
+          {%- endif -%}
+        {%- else -%}
+          <div class="empty"><p>No encontramos resultados para “{{ search.terms | escape }}”. Prueba con otra palabra.</p></div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{"name":"Búsqueda 69","settings":[],"presets":[{"name":"Búsqueda 69"}]}
+{% endschema %}
