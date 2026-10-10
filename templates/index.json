@@ -73,7 +73,7 @@
       ],
       "settings": {
         "autoplay": true,
-        "interval": 6,
+        "interval": 4,
         "guarantee_1": "Envío discreto",
         "guarantee_2": "Pago seguro",
         "guarantee_3": "Privacidad total"
