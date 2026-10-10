@@ -1,0 +1,54 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "69 SEXSHOP",
+    "theme_author": "69 SEXSHOP",
+    "theme_version": "2.1.0",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://help.shopify.com/support"
+  },
+  {
+    "name": "Identidad y colores",
+    "settings": [
+      {"type":"header","content":"Marca"},
+      {"type":"image_picker","id":"logo","label":"Logo (PNG transparente)","info":"Si lo dejas vacío se usa el logo incluido en el tema."},
+      {"type":"image_picker","id":"favicon","label":"Favicon"},
+      {"type":"text","id":"announcement","label":"Barra superior","default":"Envío discreto · Compra segura · Atención privada"},
+      {"type":"header","content":"Colores"},
+      {"type":"color","id":"accent","label":"Rojo de marca (solo acento)","default":"#E60012"},
+      {"type":"color","id":"accent_glow","label":"Rojo brillante (hover y brillo)","default":"#FF1020"},
+      {"type":"color","id":"background","label":"Fondo principal","default":"#050505"},
+      {"type":"color","id":"surface","label":"Superficie","default":"#111111"},
+      {"type":"color","id":"text","label":"Texto","default":"#F5F3EF"},
+      {"type":"color","id":"muted","label":"Texto secundario","default":"#A7A7A7"},
+      {"type":"header","content":"Acceso"},
+      {"type":"checkbox","id":"show_age_notice","label":"Mostrar aviso +18 al entrar","default":true},
+      {"type":"checkbox","id":"show_advisor","label":"Mostrar la guía de preguntas (abajo a la izquierda)","default":true}
+    ]
+  },
+  {
+    "name": "Pagos",
+    "settings": [
+      {"type":"text","id":"payment_text","label":"Texto de pagos en el pie de página","default":"Pagos seguros con Wompi","info":"Déjalo vacío para ocultarlo. Los medios de pago reales se activan en Shopify → Configuración → Pagos."}
+    ]
+  },
+  {
+    "name": "Contacto y redes",
+    "settings": [
+      {"type":"text","id":"whatsapp_number","label":"WhatsApp (solo números, con indicativo)","info":"Ejemplo: 573001234567. Si lo dejas vacío no aparece el botón."},
+      {"type":"text","id":"whatsapp_message","label":"Mensaje inicial de WhatsApp","default":"Hola, quisiera asesoría para elegir un producto."},
+      {"type":"text","id":"instagram_url","label":"Instagram","default":"https://www.instagram.com/69_sexshopp"},
+      {"type":"text","id":"tiktok_url","label":"TikTok","default":"https://www.tiktok.com/@69.sexshop","info":"Pega el enlace completo, por ejemplo https://www.tiktok.com/@tuusuario. El ícono aparece en el pie de página al llenarlo."}
+    ]
+  },
+  {
+    "name": "Datos del negocio (pie de página)",
+    "settings": [
+      {"type":"paragraph","content":"Solo se muestran los campos que llenes. Completa estos datos con la información real del negocio."},
+      {"type":"text","id":"legal_name","label":"Razón social"},
+      {"type":"text","id":"nit","label":"NIT"},
+      {"type":"text","id":"address","label":"Dirección"},
+      {"type":"text","id":"contact_email","label":"Correo de contacto"}
+    ]
+  }
+]
