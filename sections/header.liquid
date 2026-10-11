@@ -28,6 +28,9 @@
 
     <div class="header-actions">
       <a class="icon-btn" href="{{ routes.search_url }}" aria-label="Buscar">{% render 'icon', name: 'search' %}</a>
+      {%- if shop.customer_accounts_enabled -%}
+      <a class="icon-btn" href="{{ routes.account_url }}" aria-label="Mi cuenta">{% render 'icon', name: 'user' %}</a>
+      {%- endif -%}
       <a class="icon-btn" href="{{ routes.root_url }}pages/favoritos" aria-label="Favoritos">
         {% render 'icon', name: 'heart' %}<span class="count" data-fav-count hidden>0</span>
       </a>
