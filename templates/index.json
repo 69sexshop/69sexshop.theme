@@ -38,19 +38,6 @@
             "button2_url": ""
           }
         },
-        "s3": {
-          "type": "slide",
-          "settings": {
-            "line_1": "Lencería",
-            "line_accent": "que se siente",
-            "line_3": "como tú.",
-            "text": "Piezas seleccionadas para sentirte sensual, con estilo.",
-            "button_label": "Ver lencería",
-            "button_url": "/collections/lenceria",
-            "button2_label": "",
-            "button2_url": ""
-          }
-        },
         "s4": {
           "type": "slide",
           "settings": {
@@ -68,7 +55,6 @@
       "block_order": [
         "s1",
         "s2",
-        "s3",
         "s4"
       ],
       "settings": {
@@ -109,15 +95,6 @@
             "url": "/collections/parejas"
           }
         },
-        "c4": {
-          "type": "category",
-          "settings": {
-            "image": "shopify://shop_images/Lenceria_negra_bajo_luces_rojas.png",
-            "title": "Lencería",
-            "subtitle": "Sensualidad",
-            "url": "/collections/lenceria"
-          }
-        },
         "c5": {
           "type": "category",
           "settings": {
@@ -132,7 +109,6 @@
         "c1",
         "c2",
         "c3",
-        "c4",
         "c5"
       ],
       "settings": {
@@ -145,7 +121,7 @@
       "settings": {
         "title": "La selección",
         "text": "Pocos productos, bien elegidos.",
-        "collection": "",
+        "collection": "mas-deseados",
         "products_to_show": 8
       }
     },
@@ -155,45 +131,45 @@
         "k1": {
           "type": "combo",
           "settings": {
-            "title": "Combo Rompe Diablas",
+            "title": "Combo 69 Pareja",
             "badge": "Más vendido",
-            "product": "",
+            "product": "combo-69-pareja",
             "url": "/collections/combos"
           }
         },
         "k2": {
           "type": "combo",
           "settings": {
-            "title": "Combo Titán",
+            "title": "Combo Resistencia",
             "badge": "",
-            "product": "",
+            "product": "combo-resistencia",
             "url": "/collections/combos"
           }
         },
         "k3": {
           "type": "combo",
           "settings": {
-            "title": "Combo Destroyer",
+            "title": "Combo Noche Caliente",
             "badge": "",
-            "product": "",
+            "product": "combo-noche-caliente",
             "url": "/collections/combos"
           }
         },
         "k4": {
           "type": "combo",
           "settings": {
-            "title": "Combo Pecado",
+            "title": "Combo Energía 69 Pareja",
             "badge": "",
-            "product": "",
+            "product": "combo-energia-69-pareja",
             "url": "/collections/combos"
           }
         },
         "k5": {
           "type": "combo",
           "settings": {
-            "title": "Combo 69",
+            "title": "Combo Explora",
             "badge": "",
-            "product": "",
+            "product": "combo-explora",
             "url": "/collections/combos"
           }
         }
@@ -359,13 +335,6 @@
             "url": "/collections/estimulacion"
           }
         },
-        "f6": {
-          "type": "option",
-          "settings": {
-            "title": "Busco lencería",
-            "url": "/collections/lenceria"
-          }
-        },
         "f7": {
           "type": "option",
           "settings": {
@@ -379,7 +348,6 @@
         "f2",
         "f3",
         "f4",
-        "f6",
         "f7"
       ],
       "settings": {
